@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DrOetker">
+        <activity android:name=".MessageActivity"></activity>
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".StartActivity"></activity>
+            android:parentActivityName=".StartActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".RegisterActivity"
