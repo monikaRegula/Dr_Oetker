@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Login");
+        getSupportActionBar().setTitle("Logowanie");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         auth = FirebaseAuth.getInstance();
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
-                    Toast.makeText(LoginActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Wszystkie pola są wymagane", Toast.LENGTH_SHORT).show();
                 } else {
                     auth.signInWithEmailAndPassword(txt_email, txt_password)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                                         startActivity(intent);
                                         finish();
                                     } else {
-                                        Toast.makeText(LoginActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this, "Autentykcja nie powiodła się", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });

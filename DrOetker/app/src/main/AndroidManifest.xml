@@ -9,12 +9,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.DrOetker">
-        <activity android:name=".ResetPasswordActivity" android:parentActivityName=".LoginActivity"></activity>
+        <activity android:name=".Upload_Activity"></activity>
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:parentActivityName=".LoginActivity" />
         <activity android:name=".MessageActivity" />
         <activity
             android:name=".LoginActivity"
@@ -31,23 +34,22 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".notifications.MyFirebaseService"
+        <service
+            android:name=".notifications.MyFirebaseService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
-        <service android:name=".notifications.MyFirebaseMessaging"
+        <service
+            android:name=".notifications.MyFirebaseMessaging"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-
     </application>
 
 </manifest>

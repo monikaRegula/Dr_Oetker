@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
@@ -87,13 +89,13 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (unread == 0){
-                    viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
+                    viewPagerAdapter.addFragment(new ChatsFragment(), "Czat");
                 } else {
-                    viewPagerAdapter.addFragment(new ChatsFragment(), "("+unread+") Chats");
+                    viewPagerAdapter.addFragment(new ChatsFragment(), "("+unread+") Czat");
                 }
 
-                viewPagerAdapter.addFragment(new UsersFragment(), "Users");
-                viewPagerAdapter.addFragment(new ProfileFragment(), "Profile");
+                viewPagerAdapter.addFragment(new UsersFragment(), "Lekarze");
+                viewPagerAdapter.addFragment(new ProfileFragment(), "Moje dane");
 
                 viewPager.setAdapter(viewPagerAdapter);
 
@@ -106,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     @Override

@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Password"
+            android:hint="Hasło"
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"
             app:met_floatingLabel="normal" />
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:background="@color/colorPrimaryDark"
-            android:text="Login"
+            android:text="Zaloguj"
             android:textColor="#fff"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:id="@+id/forgot_password"
-            android:text="Forgot your password"
+            android:text="Zapomniałaś hasła"
             android:layout_marginTop="10dp"
             android:layout_gravity="end"
             android:textColor="@color/colorPrimaryDark"

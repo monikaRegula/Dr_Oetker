@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
@@ -30,6 +31,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.oetker.R;
+import com.oetker.Upload_Activity;
 import com.oetker.model.User;
 import java.util.HashMap;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -39,6 +41,7 @@ public class ProfileFragment extends Fragment {
 
     CircleImageView image_profile;
     TextView username;
+    Button btn_storage;
 
     DatabaseReference reference;
     FirebaseUser fuser;
@@ -54,6 +57,7 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         image_profile = view.findViewById(R.id.profile_image);
         username = view.findViewById(R.id.username);
+        btn_storage = view.findViewById(R.id.btn_storage);
 
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
@@ -83,6 +87,12 @@ public class ProfileFragment extends Fragment {
                openImage();
             }
         } );
+        btn_storage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Upload_Activity.class));
+            }
+        });
         return view;
     }
 

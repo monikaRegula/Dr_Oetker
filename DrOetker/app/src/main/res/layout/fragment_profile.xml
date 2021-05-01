@@ -8,42 +8,66 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/cardview">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="324dp"
+            android:layout_height="413dp"
             android:padding="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile"
+                android:text="Profil"
                 android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/profile_image"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="username"
                 android:layout_below="@+id/profile_image"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:text="username"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                android:id="@+id/username"
-                android:layout_marginBottom="20dp"/>
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:layout_width="133dp"
+                android:layout_height="174dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="7dp"
+                android:src="@drawable/my_files" />
+
+            <Button
+                android:id="@+id/btn_storage"
+                android:layout_width="119dp"
+                android:layout_height="72dp"
+                android:layout_below="@+id/username"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="64dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Button" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

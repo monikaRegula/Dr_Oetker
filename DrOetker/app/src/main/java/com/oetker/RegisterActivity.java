@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Register");
+        getSupportActionBar().setTitle("Rejestracja");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         username = findViewById(R.id.username);
@@ -50,9 +50,9 @@ public class RegisterActivity extends AppCompatActivity {
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
                 if (TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
-                    Toast.makeText(RegisterActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Wszystkie pola są wymagane", Toast.LENGTH_SHORT).show();
                 } else if (txt_password.length() < 6) {
-                    Toast.makeText(RegisterActivity.this, "Password must be at least characters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Hasło musi zawierać conajmniej 6 znaków", Toast.LENGTH_SHORT).show();
                 } else {
                     register(txt_username, txt_email, txt_password);
                 }
@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             });
                     } else {
-                            Toast.makeText(RegisterActivity.this, "You can't register with this email or password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Nie możesz się zarejestrować się tym mailem i hasłem", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

@@ -1,6 +1,7 @@
 package com.oetker.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,9 +56,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
         if(position == mChat.size()-1){
             if(chat.isIsseen()){
-                holder.txt_seen.setText("Seen");
+                holder.txt_seen.setText("Odczytano");
+                holder.txt_seen.setTextColor(Color.CYAN);
             }else{
-                holder.txt_seen.setText("Delivered");
+                holder.txt_seen.setText("Wysłano");
             }
         }else{
             holder.txt_seen.setVisibility(View.GONE);
