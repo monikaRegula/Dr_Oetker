@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.DrOetker">
-        <activity android:name=".Upload_Activity"></activity>
+        <activity android:name=".RetrieveFirebaseStoragePdf" />
+        <activity android:name=".Upload_Activity" />
         <activity
             android:name=".ResetPasswordActivity"
             android:parentActivityName=".LoginActivity" />

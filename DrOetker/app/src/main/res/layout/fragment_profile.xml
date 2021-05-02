@@ -12,7 +12,7 @@
         android:id="@+id/cardview">
 
         <RelativeLayout
-            android:layout_width="324dp"
+            android:layout_width="match_parent"
             android:layout_height="413dp"
             android:padding="8dp">
 
@@ -45,26 +45,29 @@
                 android:textStyle="bold" />
 
             <ImageButton
-                android:layout_width="133dp"
-                android:layout_height="174dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="14dp"
-                android:layout_marginBottom="7dp"
-                android:src="@drawable/my_files" />
-
-            <Button
-                android:id="@+id/btn_storage"
-                android:layout_width="119dp"
-                android:layout_height="72dp"
+                android:id="@+id/btn_add_file"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
                 android:layout_below="@+id/username"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="64dp"
-                android:background="@color/colorPrimaryDark"
-                android:text="Button" />
+                android:layout_marginStart="-2dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="37dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_baseline_post_add_24" />
+
+            <ImageButton
+                android:id="@+id/btn_retrieve_files"
+                android:layout_width="175dp"
+                android:layout_height="180dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="207dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="2dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_baseline_view_list_24" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.oetker.model.Constants;
+import com.oetker.model.Upload;
 
 import java.security.acl.Permission;
 
@@ -31,6 +34,7 @@ public class Upload_Activity extends AppCompatActivity {
 
     Button selectFile, upload;
     TextView notification;
+    EditText fileName;
 
     FirebaseStorage storage;
     FirebaseDatabase database;
@@ -46,7 +50,8 @@ public class Upload_Activity extends AppCompatActivity {
 
         selectFile = findViewById(R.id.select);
         upload = findViewById(R.id.upload);
-        notification = findViewById(R.id.notification);
+        notification = findViewById(R.id.textViewStatus);
+        fileName = findViewById(R.id.editTextFileName);
 
         selectFile.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -82,6 +87,7 @@ public class Upload_Activity extends AppCompatActivity {
     }
 
     private void selectPdf(){
+        //https://www.youtube.com/watch?v=XOf_v2f85RU
         Intent intent = new Intent();
         intent.setType("application/pdf");
         intent.setAction(Intent.ACTION_GET_CONTENT); // fetching files
@@ -108,22 +114,26 @@ public class Upload_Activity extends AppCompatActivity {
         progressDialog.setProgress(0);
         progressDialog.show();
 
-        final String filename = System.currentTimeMillis() + "";
+        final String filename = fileName.getText().toString();
         StorageReference storageReference = storage.getReference();
-        storageReference.child("Uploads").child(filename).putFile(pdfUri)
+        storageReference.child(Constants.STORAGE_PATH_UPLOADS).child(filename).putFile(pdfUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>(){
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
                         DatabaseReference reference = database.getReference();
-                        reference.child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void> (){
+
+                        reference = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
+
+                        Upload upload = new Upload(fileName.getText().toString(), url);
+                        reference.child(reference.push().getKey()).setValue(upload).addOnCompleteListener(new OnCompleteListener<Void> (){
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                               if(task.isSuccessful()){
-                                   Toast.makeText(Upload_Activity.this, "Plik pomyślnie dodany", Toast.LENGTH_SHORT).show();
-                               }else{
-                                   Toast.makeText(Upload_Activity.this, "Plik nie został dodany!!!", Toast.LENGTH_SHORT).show();
-                               }
+                                if(task.isSuccessful()){
+                                    Toast.makeText(Upload_Activity.this, "Plik pomyślnie dodany", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(Upload_Activity.this, "Plik nie został dodany!!!", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
                     }

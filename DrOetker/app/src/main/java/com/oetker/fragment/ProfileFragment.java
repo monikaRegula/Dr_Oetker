@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
@@ -31,6 +31,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.oetker.R;
+import com.oetker.RetrieveFirebaseStoragePdf;
 import com.oetker.Upload_Activity;
 import com.oetker.model.User;
 import java.util.HashMap;
@@ -41,7 +42,8 @@ public class ProfileFragment extends Fragment {
 
     CircleImageView image_profile;
     TextView username;
-    Button btn_storage;
+    ImageButton btn_add_file;
+    ImageButton btn_retrieve_files;
 
     DatabaseReference reference;
     FirebaseUser fuser;
@@ -57,8 +59,8 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         image_profile = view.findViewById(R.id.profile_image);
         username = view.findViewById(R.id.username);
-        btn_storage = view.findViewById(R.id.btn_storage);
-
+        btn_add_file = view.findViewById(R.id.btn_add_file);
+        btn_retrieve_files = view.findViewById(R.id.btn_retrieve_files);
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
@@ -87,10 +89,16 @@ public class ProfileFragment extends Fragment {
                openImage();
             }
         } );
-        btn_storage.setOnClickListener(new View.OnClickListener() {
+        btn_add_file.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), Upload_Activity.class));
+            }
+        });
+        btn_retrieve_files.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), RetrieveFirebaseStoragePdf.class));
             }
         });
         return view;
