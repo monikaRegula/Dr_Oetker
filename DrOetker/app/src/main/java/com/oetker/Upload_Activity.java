@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -38,6 +40,8 @@ public class Upload_Activity extends AppCompatActivity {
 
     FirebaseStorage storage;
     FirebaseDatabase database;
+    DatabaseReference reference;
+    FirebaseUser fuser;
     Uri pdfUri;
     ProgressDialog progressDialog;
 
@@ -52,6 +56,8 @@ public class Upload_Activity extends AppCompatActivity {
         upload = findViewById(R.id.upload);
         notification = findViewById(R.id.textViewStatus);
         fileName = findViewById(R.id.editTextFileName);
+
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
 
         selectFile.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -114,9 +120,10 @@ public class Upload_Activity extends AppCompatActivity {
         progressDialog.setProgress(0);
         progressDialog.show();
 
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
         final String filename = fileName.getText().toString();
         StorageReference storageReference = storage.getReference();
-        storageReference.child(Constants.STORAGE_PATH_UPLOADS).child(filename).putFile(pdfUri)
+        storageReference.child(Constants.STORAGE_PATH_UPLOADS).child(fuser.getUid()).child(filename).putFile(pdfUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>(){
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

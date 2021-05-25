@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
+import com.oetker.model.Constants;
 
 public class RetrieveFirebaseStoragePdf extends AppCompatActivity {
 
@@ -49,7 +50,8 @@ public class RetrieveFirebaseStoragePdf extends AppCompatActivity {
 
     private void listuj(){
 //        https://www.youtube.com/watch?v=sT8jJPJqMEg
-        listRef = storage.getReference().child("Uploads");
+//        listRef = storage.getReference().child("Uploads");
+        listRef = storage.getReference().child("Uploads").child(fuser.getUid());
         listRef.listAll()
                 .addOnSuccessListener(new OnSuccessListener<ListResult>() {
                     @Override
