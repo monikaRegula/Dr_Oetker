@@ -1,5 +1,5 @@
 # Dr_Oetker
-Studia telemedycyna
+Studia projekt
 
 ![image](https://user-images.githubusercontent.com/33186866/157767808-e3ee92b3-b362-472e-8a8b-20791452bf92.png)
 
